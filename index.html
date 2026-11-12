@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Zimbabwe - 100 Premier Resorts & Destinations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            goldlight: '#F3E5AB',
+                            terracotta: '#C85A32',
+                            terracottadark: '#9E3C1B',
+                            emerald: '#1B4D3E',
+                            emeraldlight: '#2D725F',
+                            sand: '#FAF6EF',
+                            dark: '#121916',
+                            card: '#1A2320'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar & interactive dynamics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121916;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D725F;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans min-h-full flex flex-col antialiased selection:bg-brand-gold selection:text-brand-dark">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-brand-dark/90 backdrop-blur-md border-b border-brand-emeraldlight/30 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="resetFilters()">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-gold via-brand-terracotta to-brand-emerald flex items-center justify-center shadow-lg shadow-brand-terracotta/20 border border-brand-gold/30">
+                        <i class="fa-solid me-0 fa-compass text-slate-900 text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-tight bg-gradient-to-r from-brand-goldlight via-white to-brand-gold bg-clip-text text-transparent">
+                            ZIMBABWE
+                        </span>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-brand-gold block -mt-1">Resorts & Destinations</span>
+                    </div>
+                </div>
+
+                <!-- Stats Badges & View Switcher -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <div class="flex items-center space-x-2 bg-brand-emerald/30 border border-brand-emeraldlight/40 px-4 py-2 rounded-full text-xs font-medium">
+                        <i class="fa-solid fa-map-pin text-brand-gold"></i>
+                        <span><strong id="dest-count" class="text-brand-gold font-bold">100</strong> Destinations</span>
+                    </div>
+                    <button id="wishlist-badge-btn" onclick="toggleWishlistFilter()" class="flex items-center space-x-2 bg-brand-terracotta/20 hover:bg-brand-terracotta/30 border border-brand-terracotta/40 px-4 py-2 rounded-full text-xs font-medium transition cursor-pointer">
+                        <i class="fa-solid fa-heart text-brand-terracotta"></i>
+                        <span>Wishlist (<span id="wishlist-count" class="text-brand-gold font-bold">0</span>)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-brand-dark via-brand-emerald/20 to-brand-dark py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-semibold uppercase tracking-widest mb-4">
+                Explore The Jewel of Africa
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-tight">
+                Discover Zimbabwe's <span class="italic text-brand-gold font-normal">Most Spectacular</span> Resorts & Sanctuaries
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                From the majestic thunder of Victoria Falls to the misty peaks of Nyanga, luxury safari camps, ancient stone monuments, and serene Kariba sunsets.
+            </p>
+
+            <!-- Search & Filter Controls -->
+            <div class="bg-brand-card/90 border border-brand-emeraldlight/30 rounded-2xl p-4 sm:p-6 shadow-2xl backdrop-blur-md max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                    <!-- Search Input -->
+                    <div class="sm:col-span-6 relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="search-input" placeholder="Search resort name, location, or keyword..." 
+                               class="w-full pl-11 pr-4 py-3 bg-brand-dark/80 border border-brand-emeraldlight/40 rounded-xl text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-gold text-sm transition">
+                    </div>
+
+                    <!-- Region Selector -->
+                    <div class="sm:col-span-3">
+                        <select id="region-filter" class="w-full px-4 py-3 bg-brand-dark/80 border border-brand-emeraldlight/40 rounded-xl text-slate-100 focus:outline-none focus:border-brand-gold text-sm transition cursor-pointer">
+                            <option value="All">All Regions</option>
+                            <option value="Victoria Falls & Batoka">Victoria Falls & Zambezi</option>
+                            <option value="Eastern Highlands">Eastern Highlands</option>
+                            <option value="Hwange & West">Hwange & Matabeleland</option>
+                            <option value="Kariba & Mana Pools">Kariba & Mana Pools</option>
+                            <option value="Great Zimbabwe & South">Great Zimbabwe & Masvingo</option>
+                            <option value="Harare & Central">Harare & Central</option>
+                            <option value="Matobo & Bulawayo">Matobo & Bulawayo</option>
+                            <option value="Lowveld & Gonarezhou">Lowveld & Gonarezhou</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort Options -->
+                    <div class="sm:col-span-3">
+                        <select id="sort-filter" class="w-full px-4 py-3 bg-brand-dark/80 border border-brand-emeraldlight/40 rounded-xl text-slate-100 focus:outline-none focus:border-brand-gold text-sm transition cursor-pointer">
+                            <option value="popular">Highest Rated</option>
+                            <option value="az">Name (A - Z)</option>
+                            <option value="za">Name (Z - A)</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Category Pills Bar -->
+                <div id="category-bar" class="flex items-center space-x-2 overflow-x-auto pt-4 mt-2 pb-1 text-xs no-scrollbar border-t border-brand-emeraldlight/20">
+                    <!-- Populated via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+        <!-- Status / Active Filters Indicator -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-brand-emeraldlight/20 gap-4">
+            <div class="flex items-center space-x-3">
+                <h2 class="text-xl font-bold font-serif text-white">Resort Destinations</h2>
+                <span id="results-count" class="bg-brand-emerald/40 text-brand-gold text-xs font-semibold px-3 py-1 rounded-full border border-brand-emeraldlight/50">
+                    Showing 100 places
+                </span>
+            </div>
+
+            <!-- View Toggle & Quick Actions -->
+            <div class="flex items-center space-x-3">
+                <button id="view-grid-btn" onclick="setViewMode('grid')" class="px-3.5 py-2 rounded-lg bg-brand-gold text-slate-900 font-semibold text-xs flex items-center space-x-2 transition shadow">
+                    <i class="fa-solid fa-grip"></i>
+                    <span>Grid View</span>
+                </button>
+                <button id="view-map-btn" onclick="setViewMode('map')" class="px-3.5 py-2 rounded-lg bg-brand-card hover:bg-brand-emerald/40 text-slate-300 font-semibold text-xs flex items-center space-x-2 border border-brand-emeraldlight/30 transition">
+                    <i class="fa-solid fa-map-location-dot text-brand-gold"></i>
+                    <span>Regional Map View</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid Container -->
+        <div id="resorts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Resort Cards Populated dynamically via JS -->
+        </div>
+
+        <!-- Interactive Map Overview Container (Hidden by default) -->
+        <div id="resorts-map-view" class="hidden bg-brand-card border border-brand-emeraldlight/30 rounded-2xl p-6 relative overflow-hidden">
+            <div class="mb-4 flex justify-between items-center">
+                <div>
+                    <h3 class="font-serif text-lg font-bold text-brand-gold">Zimbabwe Regional Destination Map</h3>
+                    <p class="text-xs text-slate-400">Click any regional hot-spot to explore resorts in that area</p>
+                </div>
+                <button onclick="setViewMode('grid')" class="text-xs text-brand-gold underline hover:text-white">Back to Cards</button>
+            </div>
+
+            <!-- Stylized Regional Interactive Map Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[500px]">
+                <!-- Interactive Region Selector List -->
+                <div class="lg:col-span-4 bg-brand-dark/80 p-4 rounded-xl border border-brand-emeraldlight/20 space-y-2 overflow-y-auto max-h-[550px]" id="map-region-list">
+                    <!-- Dynamic region map buttons -->
+                </div>
+
+                <!-- Region Highlights Panel -->
+                <div class="lg:col-span-8 bg-brand-dark/40 p-6 rounded-xl border border-brand-emeraldlight/20 flex flex-col justify-between" id="map-region-detail">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <i class="fa-solid fa-compass text-2xl text-brand-gold"></i>
+                            <h4 id="map-region-title" class="font-serif text-2xl font-bold text-white">Select a Region</h4>
+                        </div>
+                        <p id="map-region-desc" class="text-sm text-slate-300 leading-relaxed mb-6">Choose a region on the left to inspect featured resorts, wildlife highlights, and key attractions in that province.</p>
+                        
+                        <div id="map-region-resorts" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="no-results" class="hidden text-center py-20 bg-brand-card/40 rounded-2xl border border-brand-emeraldlight/20 my-8">
+            <i class="fa-solid fa-compass-drafting text-5xl text-brand-gold/40 mb-4 block"></i>
+            <h3 class="text-xl font-bold text-white mb-2">No Destinations Found</h3>
+            <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">We couldn't find any resorts matching your current filters or search term.</p>
+            <button onclick="resetFilters()" class="bg-brand-gold text-slate-900 font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl hover:bg-brand-goldlight transition">
+                Reset All Filters
+            </button>
+        </div>
+    </main>
+
+    <!-- Detailed Modal View -->
+    <div id="detail-modal" class="fixed inset-0 z-50 hidden bg-brand-dark/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="bg-brand-card border border-brand-emeraldlight/40 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative animate-fadeIn">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-brand-dark/80 hover:bg-brand-terracotta text-white w-10 h-10 rounded-full flex items-center justify-center border border-white/20 transition cursor-pointer">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Modal Content (Filled via JS) -->
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-brand-emeraldlight/30 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-brand-gold flex items-center justify-center text-slate-900 font-bold">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold text-white">Zimbabwe Tourism Directory</span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-md leading-relaxed">
+                        A comprehensive showcase of 100 remarkable resorts, lodges, safari camps, and heritage destinations across Zimbabwe. Discover luxury, wilderness, adventure, and rich cultural traditions.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-3 text-brand-gold">Top Regions</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li class="hover:text-brand-gold cursor-pointer" onclick="filterByRegion('Victoria Falls & Batoka')">Victoria Falls & Zambezi</li>
+                        <li class="hover:text-brand-gold cursor-pointer" onclick="filterByRegion('Eastern Highlands')">Eastern Highlands (Nyanga/Vumba)</li>
+                        <li class="hover:text-brand-gold cursor-pointer" onclick="filterByRegion('Hwange & West')">Hwange National Park</li>
+                        <li class="hover:text-brand-gold cursor-pointer" onclick="filterByRegion('Kariba & Mana Pools')">Lake Kariba & Mana Pools</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-3 text-brand-gold">Key Categories</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li class="hover:text-brand-gold cursor-pointer" onclick="filterByCategory('Safari & Wildlife')">Safari & Wildlife</li>
+                        <li class="hover:text-brand-gold cursor-pointer" onclick="filterByCategory('Luxury Lodge')">Luxury Lodges</li>
+                        <li class="hover:text-brand-gold cursor-pointer" onclick="filterByCategory('Mountain Resort')">Mountain Retreats</li>
+                        <li class="hover:text-brand-gold cursor-pointer" onclick="filterByCategory('Heritage & Culture')">Heritage & Culture</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-brand-emeraldlight/20 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 Zimbabwe Resorts & Tourist Places. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Built for Travelers & Adventure Seekers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Store for 100 Zimbabwean Resorts & Destinations
+        const ZIM_RESORTS = [
+            // --- VICTORIA FALLS & ZAMBEZI (1 - 15) ---
+            {
+                id: 1,
+                name: "The Victoria Falls Hotel",
+                region: "Victoria Falls & Batoka",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Grand Heritage",
+                desc: "Established in 1904, 'The Grand Dame of the Falls' offers Edwardian luxury overlooking the Historic Victoria Falls Bridge with dramatic spray views.",
+                highlights: ["High tea on Stanley's Terrace", "Private walkway to Victoria Falls", "Gourmet dining at The Livingstone Room"],
+                bestTime: "April to September",
+                coords: "Victoria Falls City"
+            },
+            {
+                id: 2,
+                name: "Victoria Falls Safari Lodge",
+                region: "Victoria Falls & Batoka",
+                category: "Safari & Wildlife",
+                price: "$$$",
+                rating: 4.8,
+                badge: "Waterhole Views",
+                desc: "Perched on a natural plateau, offering spectacular sunset views over a wildlife-frequented waterhole and pristine bushveld.",
+                highlights: ["The Boma - Dinner & Drum Show", "Vulture Culture Experience", "Sunset deck views"],
+                bestTime: "Year-round",
+                coords: "Victoria Falls City"
+            },
+            {
+                id: 3,
+                name: "Elephant Camp Victoria Falls",
+                region: "Victoria Falls & Batoka",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "All-Inclusive Luxury",
+                desc: "Exclusive luxury tented suites with private plunge pools, situated inside a private reserve with distant views of the Zambezi spray.",
+                highlights: ["Private plunge pools", "Meet the resident rescued elephants", "Canopy tour zip lining"],
+                bestTime: "May to October",
+                coords: "Victoria Falls Reserve"
+            },
+            {
+                id: 4,
+                name: "Old Drift Lodge",
+                region: "Victoria Falls & Batoka",
+                category: "Water & Lakes",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Zambezi Riverfront",
+                desc: "Nestled on the banks of the upper Zambezi River inside Zambezi National Park, blending classic safari canvas with eco-luxury.",
+                highlights: ["River safari cruises", "Game drives in Zambezi NP", "Riverfront viewing decks"],
+                bestTime: "Dry Season (June-Nov)",
+                coords: "Zambezi National Park"
+            },
+            {
+                id: 5,
+                name: "Ilala Lodge Hotel",
+                region: "Victoria Falls & Batoka",
+                category: "Boutique Hotel",
+                price: "$$",
+                rating: 4.7,
+                badge: "Closest to Falls",
+                desc: "Boutique hospitality located closest to Victoria Falls National Park. Wild warthogs and impala frequently graze on the lush manicured lawn.",
+                highlights: ["Palm Restaurant", "Ra-Ikane river cruises", "Walking distance to falls entrance"],
+                bestTime: "Year-round",
+                coords: "Victoria Falls Town"
+            },
+            {
+                id: 6,
+                name: "Pioneer Lodge Victoria Falls",
+                region: "Victoria Falls & Batoka",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.5,
+                badge: "Cozy Garden Lodge",
+                desc: "Set in lush tropical gardens, a peaceful haven featuring contemporary safari decor and personalized Zimbabwean hospitality.",
+                highlights: ["Tropical gardens", "Craft cocktail lounge", "Day tour booking hub"],
+                bestTime: "Year-round",
+                coords: "Victoria Falls Suburbs"
+            },
+            {
+                id: 7,
+                name: "Batonka Guest Lodge",
+                region: "Victoria Falls & Batoka",
+                category: "Boutique Hotel",
+                price: "$$",
+                rating: 4.7,
+                badge: "Eco-Friendly",
+                desc: "A tranquil sanctuary tucked away in quiet residential Victoria Falls, offering quiet eco-luxury and pristine gardens.",
+                highlights: ["Solar-powered estate", "Verandah dining", "Quiet sanctuary setting"],
+                bestTime: "Year-round",
+                coords: "Victoria Falls"
+            },
+            {
+                
+                                            id: 8,
+                            name: "Matetsi Victoria Falls",
+                            region: "Victoria Falls & Batoka",
+                            category: "Luxury Lodge",
+                            price: "$$$$",
+                            rating: 5.0,
+                            badge: "Ultra Luxury Safari",
+                            desc: "55,000 hectares of private Zambezi riverfront wilderness combining modern architectural design with world-class safari game viewing.",
+                            highlights: ["Private riverfront suites", "Wine cellar", "Helicopter transfers"],
+                            bestTime: "May to October",
+                            coords: "Matetsi Private Game Reserve",
+                            // ADD THIS LINE:
+                            image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 9,
+                name: "Shearwater Explorers Village",
+                region: "Victoria Falls & Batoka",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.3,
+                badge: "Budget & Adventure",
+                desc: "Vibrant village resort ideal for backpackers, families, and adventure-seekers with quick access to whitewater rafting and bungi jumping.",
+                highlights: ["Whitewater rafting booking", "Courtyard pool & bar", "Custom chalet tents"],
+                bestTime: "August to December (Rafting)",
+                coords: "Victoria Falls Town Center"
+            },
+            {
+                id: 10,
+                name: "Lookout Cafe & Batoka Gorge",
+                region: "Victoria Falls & Batoka",
+                category: "Adventure & Dining",
+                price: "$$",
+                rating: 4.8,
+                badge: "Cliffside Dining",
+                desc: "Perched 120m above the turbulent Batoka Gorge rapids, offering dining alongside zip-line, gorge swing, and high-wire thrill rides.",
+                highlights: ["Wild Horizon Zip Line", "Batoka Gorge Swing", "Pan-African Fusion Menu"],
+                bestTime: "Year-round",
+                coords: "Batoka Gorge"
+            },
+            {
+                id: 11,
+                name: "Gorges Lodge & Little Gorges",
+                region: "Victoria Falls & Batoka",
+                category: "Scenic Cliff Retreat",
+                price: "$$$",
+                rating: 4.8,
+                badge: "Panoramic Gorge",
+                desc: "Dramatic chalets built directly onto the edge of Batoka Gorge, famous for resident black eagles soaring at eye level.",
+                highlights: ["Traditional Ndebele dancing", "Eagle feeding displays", "Unmatched canyon sunsets"],
+                bestTime: "Year-round",
+                coords: "Batoka Gorge East"
+            },
+            {
+                id: 12,
+                name: "Victoria Falls River Lodge",
+                region: "Victoria Falls & Batoka",
+                category: "Luxury Tented Camp",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Island Treehouses",
+                desc: "First luxury tented lodge built inside Victoria Falls National Park, featuring private Kandahar Island luxury treehouse suites.",
+                highlights: ["Kandahar Island treehouses", "Personal butler service", "Upper Zambezi boat safaris"],
+                bestTime: "May to November",
+                coords: "Zambezi National Park"
+            },
+            {
+                id: 13,
+                name: "Chundukwa River Lodge",
+                region: "Victoria Falls & Batoka",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.6,
+                badge: "Horseback Safaris",
+                desc: "Rustic-chic open-front chalets right on the Zambezi bank, renowned for equestrian safaris along the river trails.",
+                highlights: ["Horseback river safaris", "Home-cooked farm dining", "Sunset pontoon trips"],
+                bestTime: "Dry Season",
+                coords: "Upper Zambezi"
+            },
+            {
+                id: 14,
+                name: "Bayete Guest Lodge",
+                region: "Victoria Falls & Batoka",
+                category: "Boutique Hotel",
+                price: "$$",
+                rating: 4.6,
+                badge: "Tropical Oasis",
+                desc: "Family-run lodge centered around a giant tear-drop swimming pool and lush manicured gardens in Victoria Falls suburbia.",
+                highlights: ["Central boma pool bar", "Personalized tour planning", "Lush tropical ambiance"],
+                bestTime: "Year-round",
+                coords: "Victoria Falls"
+            },
+            {
+                id: 15,
+                name: "Palm River Hotel",
+                region: "Victoria Falls & Batoka",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Queensland Architecture",
+                desc: "A stylish 5-star hotel built on the Zambezi banks under ancient palm trees, inspired by British country estate design.",
+                highlights: ["Zambezi cruise jetty", "Grand courtyard pool", "Riverside fine dining"],
+                bestTime: "Year-round",
+                coords: "Zambezi River Drive"
+            },
+
+            // --- EASTERN HIGHLANDS (16 - 32) ---
+            {
+                id: 16,
+                name: "Troutbeck Resort",
+                region: "Eastern Highlands",
+                category: "Mountain Resort",
+                price: "$$",
+                rating: 4.6,
+                badge: "Nyanga Highlands",
+                desc: "Nestled in the cool Nyanga Mountains beside a trout-stocked lake, complete with a hearth fire that has burned continuously since 1962.",
+                highlights: ["9-hole mountain golf course", "Trout fishing in private lake", "Horse riding & pine walks"],
+                bestTime: "Year-round (Cool Summer/Crisp Winter)",
+                coords: "Nyanga National Park"
+            },
+            {
+                id: 17,
+                name: "Inyangani Mountain Lodge & Campsite",
+                region: "Eastern Highlands",
+                category: "Mountain Resort",
+                price: "$",
+                rating: 4.5,
+                badge: "Highest Peak Base",
+                desc: "Base lodge near Mount Inyangani (2,592m), Zimbabwe's highest mountain peak, offering hiking trails and cloud-swirled pine vistas.",
+                highlights: ["Mount Inyangani summit hikes", "Pungwe Gorge viewpoint", "Fresh trout dining"],
+                bestTime: "September to April",
+                coords: "Nyanga"
+            },
+            {
+                id: 18,
+                name: "Nyangombe Falls & Rest Camp",
+                region: "Eastern Highlands",
+                category: "Water & Lakes",
+                price: "$",
+                rating: 4.4,
+                badge: "Waterfall Cascades",
+                desc: "Scenic rest camp located adjacent to Nyangombe Falls, featuring rock pools, natural swimming slides, and pine forests.",
+                highlights: ["Natural rock slide pools", "Nyanga National Park trail", "Pine forest camping"],
+                bestTime: "After summer rains (Jan-May)",
+                coords: "Nyanga National Park"
+            },
+            {
+                id: 19,
+                name: "Frog & Fern Cottages Vumba",
+                region: "Eastern Highlands",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.7,
+                badge: "Misty Vumba Valley",
+                desc: "Self-catering cottages perched on the misty slopes of the Bvumba Mountains with panoramic views looking out into Mozambique.",
+                highlights: ["Birdwatching for Samango monkeys", "Bvumba Botanical Gardens near", "Forest canopy walks"],
+                bestTime: "October to April",
+                coords: "Vumba Mountains"
+            },
+            {
+                id: 20,
+                name: "White Horse Inn Vumba",
+                region: "Eastern Highlands",
+                category: "Boutique Hotel",
+                price: "$$",
+                rating: 4.6,
+                badge: "Old World Charm",
+                desc: "Tucked into the lush green cloud forest of the Vumba, renowned for exceptional French-inspired cuisine and English gardens.",
+                highlights: ["Fine dining in mist mountains", "Orchid garden walks", "Rare bird species viewing"],
+                bestTime: "Year-round",
+                coords: "Bvumba Highlands"
+            },
+            {
+                id: 21,
+                name: "Aberfoyle Lodge",
+                region: "Eastern Highlands",
+                category: "Eco Retreat",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Honde Valley Tea Estate",
+                desc: "Hidden inside the emerald tea plantations of Honde Valley, surrounded by pristine rainforests, rushing rivers, and rare wildlife.",
+                highlights: ["Tea factory tours", "Zip-line across gorge", "Kayaking on river pools"],
+                bestTime: "Year-round",
+                coords: "Honde Valley"
+            },
+            {
+                id: 22,
+                name: "Pine Tree Inn Nyanga",
+                region: "Eastern Highlands",
+                category: "Mountain Resort",
+                price: "$$",
+                rating: 4.3,
+                badge: "Cozy Mountain Nest",
+                desc: "Warm hospitality in the pine-scented valley of Nyanga, famous for hearty country meals and crisp mountain air.",
+                highlights: ["Verandah mountain views", "Proximity to Mutarazi Falls", "Cosy log fires"],
+                bestTime: "Year-round",
+                coords: "Nyanga Valley"
+            },
+            {
+                id: 23,
+                name: "Mutarazi Falls Skywalk & Skyline",
+                region: "Eastern Highlands",
+                category: "Adventure & Camping",
+                price: "$$",
+                rating: 4.9,
+                badge: "Highest Falls in Zim",
+                desc: "Home to Zimbabwe's highest waterfall (762m). Thrill-seekers walk across suspension bridges suspended over the dizzying abyss.",
+                highlights: ["Skywalk suspension bridges", "High-speed Skyline zip-line", "Honkey Falls scenic view"],
+                bestTime: "February to June (Max Flow)",
+                coords: "Mutarazi National Park"
+            },
+            {
+                id: 24,
+                name: "Gordon's Bay Kariba / Vumba Lodge",
+                region: "Eastern Highlands",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.4,
+                badge: "Forest Hideaway",
+                desc: "Charming timber cabins secluded among indigenous trees with views of lush valleys and distant mountain peaks.",
+                highlights: ["Forest trail hikes", "Quiet botanical walks", "Stargazing decks"],
+                bestTime: "Year-round",
+                coords: "Vumba"
+            },
+            {
+                id: 25,
+                name: "Chimanimani Hotel & Outpost",
+                region: "Eastern Highlands",
+                category: "Heritage & Culture",
+                price: "$",
+                rating: 4.2,
+                badge: "Rugged Peaks",
+                desc: "Historic base camp in Chimanimani village facing the towering quartzite peaks of the Chimanimani National Park range.",
+                highlights: ["Bridal Veil Falls visits", "Multi-day mountain hiking", "Pork Pie Hill sunset walk"],
+                bestTime: "Dry Season (May-Oct)",
+                coords: "Chimanimani"
+            },
+            {
+                id: 26,
+                name: "Heaven Lodge Chimanimani",
+                region: "Eastern Highlands",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.1,
+                badge: "Backpackers Haven",
+                desc: "Budget eco-lodge and campground surrounded by fruit trees, catering to mountain hikers and wilderness explorers.",
+                highlights: ["Campfire gatherings", "Guided hikes into Chimanimani mountains", "Organic farm produce"],
+                bestTime: "April to October",
+                coords: "Chimanimani Village"
+            },
+            {
+                id: 27,
+                name: "Inn on the Vumba",
+                region: "Eastern Highlands",
+                category: "Boutique Hotel",
+                price: "$$",
+                rating: 4.5,
+                badge: "Gateway to Mutare",
+                desc: "Charming country inn located at the threshold of the Vumba range, offering cozy cottage accommodation and sweeping valley views.",
+                highlights: ["Swimming pool with mountain view", "Cottage fire places", "Home-baked pastries"],
+                bestTime: "Year-round",
+                coords: "Mutare / Vumba"
+            },
+            {
+                id: 28,
+                name: "Montclair Hotel & Casino",
+                region: "Eastern Highlands",
+                category: "Mountain Resort",
+                price: "$$",
+                rating: 4.4,
+                badge: "Casino & Golf",
+                desc: "A lively mountain resort in Juliasdale Nyanga, featuring gaming, family sports courts, and lush pine estate walks.",
+                highlights: ["In-house Casino", "Tennis & volleyball courts", "Juliasdale pine forest tours"],
+                bestTime: "Year-round",
+                coords: "Juliasdale Nyanga"
+            },
+            {
+                id: 29,
+                name: "Nyangani Glen Cabins",
+                region: "Eastern Highlands",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.5,
+                badge: "Secluded Streams",
+                desc: "Private self-catering chalets set along mountain trout streams with cold water pools and mountain vistas.",
+                highlights: ["Private trout fishing", "Woodburn fireplaces", "Valley hiking"],
+                bestTime: "March to October",
+                coords: "Nyanga East"
+            },
+            {
+                id: 30,
+                name: "Bvumba Botanical Garden Chalets",
+                region: "Eastern Highlands",
+                category: "Heritage & Culture",
+                price: "$",
+                rating: 4.3,
+                badge: "Botanical Paradise",
+                desc: "Charming chalets nestled inside 200 hectares of manicured lawns, azalea bushes, hydrangeas, and indigenous misty forest.",
+                highlights: ["Azalea flower displays", "Sub-tropical forest paths", "Tea rooms"],
+                bestTime: "Spring (Sept-Nov)",
+                coords: "Vumba Botanical Reserve"
+            },
+            {
+                id: 31,
+                name: "Bridal Veil Falls Camp Chimanimani",
+                region: "Eastern Highlands",
+                category: "Water & Lakes",
+                price: "$",
+                rating: 4.5,
+                badge: "Cascading Waters",
+                desc: "Campground and picnic sanctuary located at the base of the delicate 50m Bridal Veil Waterfall inside a forest reserve.",
+                highlights: ["Bridal Veil Waterfall pool", "Birdwatching paths", "Natural rainforest setting"],
+                bestTime: "Jan to June",
+                coords: "Chimanimani Pass"
+            },
+            {
+                id: 32,
+                name: "Seldom Seen Birding Cottages",
+                region: "Eastern Highlands",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.7,
+                badge: "Ornithologist Dream",
+                desc: "World-famous destination for bird watchers searching for the elusive Swynnerton's Robin and Chirinda Apalis in Vumba forest.",
+                highlights: ["Guided birding tours", "Cloud forest conservation", "Private rustic chalets"],
+                bestTime: "October to March",
+                coords: "Vumba Heights"
+            },
+
+            // --- HWANGE & MATABELELAND (33 - 48) ---
+            {
+                id: 33,
+                name: "Hwange Safari Lodge",
+                region: "Hwange & West",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.5,
+                badge: "Elephant Central",
+                desc: "Bordering Hwange National Park, this classic safari resort features a viewing deck overlooking a waterhole visited by hundreds of elephants.",
+                highlights: ["Waterhole night viewing", "Open 4x4 game drives", "Traditional bush dinners"],
+                bestTime: "July to October (Peak Dry)",
+                coords: "Hwange National Park Border"
+            },
+            {
+                id: 34,
+                name: "Somalisa Camp",
+                region: "Hwange & West",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 5.0,
+                badge: "Elephant Pool",
+                desc: "Award-winning luxury bush camp situated on a famous elephant pathway in the heart of Hwange National Park.",
+                highlights: ["Splash pool frequented by elephants", "Walking safaris", "Solar eco-design"],
+                bestTime: "June to November",
+                coords: "Kennedy Vlei, Hwange"
+            },
+            {
+                id: 35,
+                name: "The Hide Safari Camp",
+                region: "Hwange & West",
+                category: "Safari & Wildlife",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Underground Hide",
+                desc: "Consistently voted one of Zimbabwe's best safari lodges, featuring an underground hide steps away from a busy waterhole.",
+                highlights: ["Underground photo hide", "Dove's Nest treehouse stay", "Night safari drives"],
+                bestTime: "May to October",
+                coords: "Hwange National Park East"
+            },
+            {
+                id: 36,
+                name: "Verney's Camp Hwange",
+                region: "Hwange & West",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.8,
+                badge: "Private Concession",
+                desc: "Set on a large remote private concession in central Hwange, surrounded by teak forests and wide open waterhole plains.",
+                highlights: ["Spacious canvas suites", "Big game tracking", "Gourmet bush cuisine"],
+                bestTime: "June to October",
+                coords: "Verney's Pan, Hwange"
+            },
+            {
+                id: 37,
+                name: "Camp Hwange",
+                region: "Hwange & West",
+                category: "Safari & Wildlife",
+                price: "$$$",
+                rating: 4.8,
+                badge: "Walking Safari Specialist",
+                desc: "Located in the Sinamatella area of northern Hwange, focused heavily on authentic walking safaris and big mammal encounters.",
+                highlights: ["Expert walking safari guides", "Solar powered Eco-lodge", "Night game drives"],
+                bestTime: "May to November",
+                coords: "Sinamatella Region, Hwange"
+            },
+            {
+                id: 38,
+                name: "Nantwich Lodge Hwange",
+                region: "Hwange & West",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.7,
+                badge: "Reclaimed Eco-Lodge",
+                desc: "Perched high on a ridge in Northern Hwange, built using reclaimed materials and offering panoramic views over lion territory.",
+                highlights: ["Unobstructed plain views", "Lion pride tracking", "Eco-conscious design"],
+                bestTime: "Dry Season",
+                coords: "Northern Hwange"
+            },
+            {
+                id: 39,
+                name: "Ivory Lodge Hwange",
+                region: "Hwange & West",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.6,
+                badge: "Treehouse Chalets",
+                desc: "Elevated stilt chalets facing a floodlit waterhole, offering intimate wildlife viewings right from your bed.",
+                highlights: ["Elevated stilt chalets", "Floodlit waterhole", "Pan-African meals"],
+                bestTime: "June to October",
+                coords: "Hwange Estate"
+            },
+            {
+                id: 40,
+                name: "Linkwasha Camp",
+                region: "Hwange & West",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Ultra Luxury Wilderness",
+                desc: "Contemporary, ultra-exclusive safari camp situated in the wildlife-rich southeastern corner of Hwange NP.",
+                highlights: ["Open-air plunge pool", "Exclusive plain access", "Luxury open-sided suites"],
+                bestTime: "June to November",
+                coords: "Linkwasha Concession"
+            },
+            {
+                id: 41,
+                name: "Robins Camp Hwange",
+                region: "Hwange & West",
+                category: "Heritage & Culture",
+                price: "$",
+                rating: 4.3,
+                badge: "Historic Rest Camp",
+                desc: "A famous historic safari destination completely refurbished to offer comfortable chalets, camping, and big cat tracking.",
+                highlights: ["Hyena & lion hot-spots", "Swimming pool & tower bar", "Affordable self-drive base"],
+                bestTime: "May to October",
+                coords: "Robins Sector, Hwange"
+            },
+            {
+                id: 42,
+                name: "Main Camp Hwange National Park",
+                region: "Hwange & West",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.0,
+                badge: "National Park Hub",
+                desc: "The primary gateway to Hwange National Park, featuring self-catering cottages, campsites, and direct park entry.",
+                highlights: ["Nyamandhlovu viewing platform", "Park ranger tours", "Self-drive safari routes"],
+                bestTime: "Year-round",
+                coords: "Hwange Main Entrance"
+            },
+            {
+                id: 43,
+                name: "Sikumi Tree Lodge",
+                region: "Hwange & West",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.4,
+                badge: "Thatch Treehouses",
+                desc: "Thatch treehouse chalets nestled among ancient mangwe trees in the Sikumi forest reserve bordering Hwange.",
+                highlights: ["Treehouse living", "Night waterhole safaris", "Sikumi forest walks"],
+                bestTime: "June to October",
+                coords: "Sikumi Forest Reserve"
+            },
+            {
+                id: 44,
+                name: "Elephant's Eye Hwange",
+                region: "Hwange & West",
+                category: "Eco Retreat",
+                price: "$$$",
+                rating: 4.7,
+                badge: "Eco Tented Luxury",
+                desc: "Four-star eco-lodge featuring luxury canvas tents, a natural ozone pool, and a starbed sleep-out deck experience.",
+                highlights: ["Sleep-out starbed", "Natural swimming pool", "Community village visits"],
+                bestTime: "May to October",
+                coords: "Hwange Private Concession"
+            },
+            {
+                id: 45,
+                name: "Gwayi River Hotel & Lodge",
+                region: "Hwange & West",
+                category: "Heritage & Culture",
+                price: "$",
+                rating: 4.0,
+                badge: "Historic Halfway Stop",
+                desc: "Historic roadside lodge along the Bulawayo-Victoria Falls highway, famous for traditional English roasts and wood fires.",
+                highlights: ["Historic safari stopover", "Gwayi valley views", "Traditional pub lounge"],
+                bestTime: "Year-round",
+                coords: "Gwayi Valley"
+            },
+            {
+                id: 46,
+                name: "MiBozi Safari Camp",
+                region: "Hwange & West",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.3,
+                badge: "Bush Camping",
+                desc: "Rustic tented safari outpost ideal for adventure travelers desiring unpretentious access to wildlife corridors.",
+                highlights: ["Campfire dining under stars", "Bush walking tours", "Birding guides"],
+                bestTime: "June to November",
+                coords: "Hwange Border"
+            },
+            {
+                id: 47,
+                name: "Deteema Dam Hide & Camp",
+                region: "Hwange & West",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.6,
+                badge: "Hippo & Croc Haven",
+                desc: "Overlooking the vibrant Deteema Dam, famous for massive elephant herds drinking alongside hippos and crocodiles.",
+                highlights: ["Deteema dam viewing deck", "Hippo pod observation", "Guided nature walks"],
+                bestTime: "July to October",
+                coords: "Deteema Sector, Hwange"
+            },
+            {
+                id: 48,
+                name: "Khulu Bush Camp",
+                region: "Hwange & West",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Intimate Luxury",
+                desc: "An intimate luxury camp with stylish thatched suites, paying tribute to the royal heritage of Matabeleland.",
+                highlights: ["Private deck waterhole views", "Plunge pool", "Under-star dinner courses"],
+                bestTime: "May to November",
+                coords: "Dete Valley"
+            },
+
+            // --- KARIBA & MANA POOLS (49 - 64) ---
+            {
+                id: 49,
+                name: "Bumi Hills Safari Lodge",
+                region: "Kariba & Mana Pools",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Infinity Pool Above Kariba",
+                desc: "Perched high on a hill overlooking the vast expanse of Lake Kariba, featuring an iconic infinity pool that merges into the lake horizon.",
+                highlights: ["World-famous lake infinity pool", "Sunset boat cruises", "Private game reserve drives"],
+                bestTime: "Year-round",
+                coords: "Lake Kariba West"
+            },
+            {
+                id: 50,
+                name: "Chikwenya Camp Mana Pools",
+                region: "Kariba & Mana Pools",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 5.0,
+                badge: "UNESCO World Heritage",
+                desc: "Located on the eastern boundary of Mana Pools, situated at the confluence of the Zambezi and Sapi Rivers under mahogany canopies.",
+                highlights: ["Canoe safaris on Zambezi", "Walking with bulls and lions", "Open-air luxury tents"],
+                bestTime: "April to November",
+                coords: "Mana Pools National Park"
+            },
+            {
+                id: 51,
+                name: "Caribbea Bay Resort",
+                region: "Kariba & Mana Pools",
+                category: "Water & Lakes",
+                price: "$$",
+                rating: 4.3,
+                badge: "Mediterranean Vibe",
+                desc: "Sardinian-style resort on the shores of Lake Kariba with swimming pools, water slides, and sunset lake cruises.",
+                highlights: ["Kariba Dam wall tours", "Tiger fishing trips", "Water sports & resort pools"],
+                bestTime: "Year-round",
+                coords: "Kariba Town"
+            },
+            {
+                id: 52,
+                name: "Ruckomechi Camp",
+                region: "Kariba & Mana Pools",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Zambezi Riverfront",
+                desc: "Situated inside a private concession in Mana Pools National Park, with views across the Zambezi to the Zambian escarpment.",
+                highlights: ["Outdoor outdoor star bed", "Canoeing safaris", "Albida tree forest walks"],
+                bestTime: "May to November",
+                coords: "Ruckomechi Concession, Mana Pools"
+            },
+            {
+                id: 53,
+                name: "Spurwing Island Lodge",
+                region: "Kariba & Mana Pools",
+                category: "Water & Lakes",
+                price: "$$",
+                rating: 4.5,
+                badge: "Island Sanctuary",
+                desc: "Located on an island inside Lake Kariba near Matusadona National Park, ideal for avid tiger anglers and wildlife boat safaris.",
+                highlights: ["Tiger fishing competitions", "Boat game safaris", "Matusadona mountain view"],
+                bestTime: "September to March (Fishing)",
+                coords: "Lake Kariba Island"
+            },
+            {
+                id: 54,
+                name: "Musango Safari Camp",
+                region: "Kariba & Mana Pools",
+                category: "Eco Retreat",
+                price: "$$$",
+                rating: 4.7,
+                badge: "Matusadona Wilderness",
+                desc: "An exclusive owner-run tented camp on a island just off the Matusadona National Park shoreline.",
+                highlights: ["Black rhino tracking", "Fossilized dinosaur bone walks", "Canoe explorations"],
+                bestTime: "May to October",
+                coords: "Matusadona Lake Shore"
+            },
+            {
+                id: 55,
+                name: "Nyamatusi Camp Mana Pools",
+                region: "Kariba & Mana Pools",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 5.0,
+                badge: "Eco-Luxury Pioneer",
+                desc: "Ultra-luxurious eco-camp set on the banks of the Zambezi River where ancient baobabs line the floodplain.",
+                highlights: ["Plunge pools in every suite", "Walking with wild dogs", "Zambezi drift safaris"],
+                bestTime: "May to November",
+                coords: "Mana Pools"
+            },
+            {
+                id: 56,
+                name: "Fothergill Island Lodge",
+                region: "Kariba & Mana Pools",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Contemporary Luxury",
+                desc: "A legendary Kariba destination reborn into an ultra-modern eco-friendly safari retreat on Matusadona's doorstep.",
+                highlights: ["Archery & sport fishing", "Luxury boat transfers", "Big five game drives"],
+                bestTime: "Year-round",
+                coords: "Fothergill Island, Kariba"
+            },
+            {
+                id: 57,
+                name: "Hornbill Lodge Kariba",
+                region: "Kariba & Mana Pools",
+                category: "Boutique Hotel",
+                price: "$$",
+                rating: 4.6,
+                badge: "Intimate Hilltop",
+                desc: "Small, intimate boutique lodge situated on Mica Point offering spectacular panoramic views over Lake Kariba.",
+                highlights: ["Panoramas of Kariba basin", "Home-cooked gourmet meals", "Quiet plunge pool"],
+                bestTime: "Year-round",
+                coords: "Mica Point, Kariba"
+            },
+            {
+                id: 58,
+                name: "John's Camp Mana Pools",
+                region: "Kariba & Mana Pools",
+                category: "Safari & Wildlife",
+                price: "$$$",
+                rating: 4.8,
+                badge: "Classic Tented Camp",
+                desc: "Unpretentious, semi-permanent tented camp delivering pure, authentic wilderness immersion in Mana Pools.",
+                highlights: ["Walk with wildlife experts", "Al-fresco dining", "Zambezi river bank views"],
+                bestTime: "June to October",
+                coords: "Mana Pools Floodplains"
+            },
+            {
+                id: 59,
+                name: "Changa Safari Camp",
+                region: "Kariba & Mana Pools",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.8,
+                badge: "Matusadona Bay",
+                desc: "Nestled in a private bay inside Matusadona National Park, featuring luxury tented suites on sandy lake beaches.",
+                highlights: ["Private sandy lake beach", "Gorge boat cruises", "Rhino sanctuary visits"],
+                bestTime: "May to November",
+                coords: "Matusadona NP"
+            },
+            {
+                id: 60,
+                name: "Nyamepi Campsite Mana Pools",
+                region: "Kariba & Mana Pools",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.4,
+                badge: "Unfenced Wilderness",
+                desc: "Famous unfenced national park campground right on the Zambezi Riverbank where elephants walk freely between tents.",
+                highlights: ["Unfenced wild camping", "Zambezi river fishing", "Starry night bush noises"],
+                bestTime: "May to October",
+                coords: "Mana Pools HQ"
+            },
+            {
+                id: 61,
+                name: "Marineland Kariba Houseboats",
+                region: "Kariba & Mana Pools",
+                category: "Water & Lakes",
+                price: "$$",
+                rating: 4.6,
+                badge: "Floating Resort",
+                desc: "Luxury houseboats chartering private voyages across Lake Kariba, complete with decks, splash pools, and tender boats.",
+                highlights: ["Private floating resort", "Lake Kariba sunsets", "On-board chef service"],
+                bestTime: "Year-round",
+                coords: "Kariba Harbor"
+            },
+            {
+                id: 62,
+                name: "Zambezi Expeditions Camp",
+                region: "Kariba & Mana Pools",
+                category: "Safari & Wildlife",
+                price: "$$$",
+                rating: 4.8,
+                badge: "Mobile Tented Safari",
+                desc: "Mobile luxury canvas camp set directly on the banks of the Zambezi, providing front-row seats to animal river crossings.",
+                highlights: ["Mobile bush camp experience", "Canoe safaris", "Chitake spring game walks"],
+                bestTime: "July to October",
+                coords: "Mana Pools Bank"
+            },
+            {
+                id: 63,
+                name: "Caterpillar Bay Kariba",
+                region: "Kariba & Mana Pools",
+                category: "Water & Lakes",
+                price: "$$",
+                rating: 4.2,
+                badge: "Sailing & Fishing",
+                desc: "Sheltered bay lodge and marina catering to boat captains, anglers, and holiday-makers on Lake Kariba.",
+                highlights: ["Sailing charters", "Fish cooking braai nights", "Quiet waterside lodging"],
+                bestTime: "Year-round",
+                coords: "Kariba Town"
+            },
+            {
+                id: 64,
+                name: "Kanga Camp Mana Pools",
+                region: "Kariba & Mana Pools",
+                category: "Safari & Wildlife",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Inland Waterhole",
+                desc: "Set in a remote inland area of Mana Pools beside the Kanga Pan, the only water source for miles during dry season.",
+                highlights: ["'Armchair' waterhole safaris", "Leopard & lion hides", "Inland wilderness access"],
+                bestTime: "August to October",
+                coords: "Kanga Pan, Mana Pools"
+            },
+
+            // --- GREAT ZIMBABWE & MASVINGO (65 - 76) ---
+            {
+                id: 65,
+                name: "Great Zimbabwe Hotel",
+                region: "Great Zimbabwe & South",
+                category: "Heritage & Culture",
+                price: "$$",
+                rating: 4.5,
+                badge: "UNESCO Monument Base",
+                desc: "Located minutes from the ancient stone ruins of Great Zimbabwe, offering traditional thatched chalets and lush grounds.",
+                highlights: ["Walking tours of Great Zimbabwe", "Conical Tower visits", "Cultural Shona village"],
+                bestTime: "Year-round",
+                coords: "Masvingo"
+            },
+            {
+                id: 66,
+                name: "Normandie Lodge Lake Mutirikwi",
+                region: "Great Zimbabwe & South",
+                category: "Water & Lakes",
+                price: "$$",
+                rating: 4.2,
+                badge: "Lake Mutirikwi Views",
+                desc: "Perched high on the hills overlooking Lake Mutirikwi (formerly Lake Kyle), featuring tranquil gardens and bass fishing.",
+                highlights: ["Bass & bream fishing", "Mutirikwi game park trips", "Panoramic lake terrace"],
+                bestTime: "March to October",
+                coords: "Lake Mutirikwi, Masvingo"
+            },
+            {
+                id: 67,
+                name: "Ancient City Lodge",
+                region: "Great Zimbabwe & South",
+                category: "Heritage & Culture",
+                price: "$$",
+                rating: 4.6,
+                badge: "Stone Architecture",
+                desc: "Built from dry-stone masonry echoing the grandeur of Great Zimbabwe, set on a granite outcrop looking towards the ruins.",
+                highlights: ["Architectural stone design", "Cultural performances", "Granite hill viewpoint"],
+                bestTime: "Year-round",
+                coords: "Great Zimbabwe Valley"
+            },
+            {
+                id: 68,
+                name: "Lake Mutirikwi Lakeshore Site",
+                region: "Great Zimbabwe & South",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.1,
+                badge: "Rhino Reserve",
+                desc: "Lakeside National Park chalets situated inside Lake Mutirikwi Recreational Park, home to white rhinos and antelope.",
+                highlights: ["Guided rhino tracking walks", "Lakeside camping", "Dam wall scenic lookout"],
+                bestTime: "Year-round",
+                coords: "Lake Mutirikwi Reserve"
+            },
+            {
+                id: 69,
+                name: "Regency Hotel Chevron",
+                region: "Great Zimbabwe & South",
+                category: "Boutique Hotel",
+                price: "$",
+                rating: 4.0,
+                badge: "City Heritage",
+                desc: "Historic hotel in the center of Masvingo town, serving as a comfortable transit hub for exploring Southern Zimbabwe.",
+                highlights: ["Masvingo market access", "Traditional Zimbabwean meals", "Conference center"],
+                bestTime: "Year-round",
+                coords: "Masvingo City Center"
+            },
+            {
+                id: 70,
+                name: "Sikato Spring Resort",
+                region: "Great Zimbabwe & South",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.3,
+                badge: "Natural Springs",
+                desc: "A quiet getaway near Masvingo surrounded by natural water springs, offering orchards, rock pools, and birding.",
+                highlights: ["Natural spring water pools", "Citrus garden walks", "Birding sanctuaries"],
+                bestTime: "Year-round",
+                coords: "Sikato Hills"
+            },
+            {
+                id: 71,
+                name: "Cleghorn Wilderness & Fishing Lodge",
+                region: "Great Zimbabwe & South",
+                category: "Water & Lakes",
+                price: "$",
+                rating: 4.2,
+                badge: "Angling Retreat",
+                desc: "Rustic fishing lodge on the shores of Lake Mutirikwi, popular with boat captains and weekend campers.",
+                highlights: ["Boating docks", "Shoreline fishing spots", "Campfires under stars"],
+                bestTime: "September to April",
+                coords: "Mutirikwi East"
+            },
+            {
+                id: 72,
+                name: "Kushinga Wildlife Sanctuary Lodge",
+                region: "Great Zimbabwe & South",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.4,
+                badge: "Wildlife Sanctuary",
+                desc: "Private game sanctuary outside Masvingo dedicated to animal rehabilitation, environmental education, and nature trails.",
+                highlights: ["Animal rehabilitation tours", "Game viewing drives", "Educational eco-walks"],
+                bestTime: "Year-round",
+                coords: "Masvingo Rural"
+            },
+            {
+                id: 73,
+                name: "Kyle National Park Cottages",
+                region: "Great Zimbabwe & South",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.1,
+                badge: "Affordable Park Stay",
+                desc: "Affordable self-catering stone chalets operated by Zimparks on the northern shore of Lake Mutirikwi.",
+                highlights: ["Boating slipways", "Game drives for giraffe & buffalo", "Lakeside braai facilities"],
+                bestTime: "Year-round",
+                coords: "Lake Mutirikwi North"
+            },
+            {
+                id: 74,
+                name: "Shabani Mine Heritage Resort",
+                region: "Great Zimbabwe & South",
+                category: "Heritage & Culture",
+                price: "$",
+                rating: 3.9,
+                badge: "Industrial Heritage",
+                desc: "Historic mining estate turned leisure lodge in Zvishavane, featuring country club golf and heritage architecture.",
+                highlights: ["Roland Park 18-hole golf", "Heritage mining tours", "Quiet gardens"],
+                bestTime: "Year-round",
+                coords: "Zvishavane"
+            },
+            {
+                id: 75,
+                name: "Rundora Game Park & Lodge",
+                region: "Great Zimbabwe & South",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.2,
+                badge: "Granite Bushveld",
+                desc: "Quiet game lodge surrounded by granitekopjes and acacia bush, supporting impala, kudu, and sable antelope.",
+                highlights: ["Granite kopje climbing", "Game viewing walks", "Country lodge dining"],
+                bestTime: "April to October",
+                coords: "Masvingo West"
+            },
+            {
+                id: 76,
+                name: "Tokwe Mukorsi Dam Outpost",
+                region: "Great Zimbabwe & South",
+                category: "Water & Lakes",
+                price: "$$",
+                rating: 4.4,
+                badge: "Newest Inland Sea",
+                desc: "Eco-lodge overlooking Zimbabwe's newly constructed massive inland dam, popular for boating and fresh water sports.",
+                highlights: ["Scenic dam boat rides", "Hilltop viewing decks", "Water sport excursions"],
+                bestTime: "Year-round",
+                coords: "Chivi / Tugwi Mukosi"
+            },
+
+            // --- MATOBO HILLS & BULAWAYO (77 - 88) ---
+            {
+                id: 77,
+                name: "Amalinda Lodge",
+                region: "Matobo & Bulawayo",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Granite Cave Suites",
+                desc: "Luxury rooms sculpted directly into ancient granite boulders in Matobo Hills, blending seamless luxury with Stone Age cave art heritage.",
+                highlights: ["Suites carved into giant boulders", "Rhino tracking on foot", "Bushman cave paintings"],
+                bestTime: "Year-round",
+                coords: "Matobo Hills National Park"
+            },
+            {
+                id: 78,
+                name: "Camp Amalinda",
+                region: "Matobo & Bulawayo",
+                category: "Heritage & Culture",
+                price: "$$$",
+                rating: 4.8,
+                badge: "World Heritage Site",
+                desc: "A majestic retreat offering tours to Cecil Rhodes' grave at 'World's View' and ancient San rock painting caves.",
+                highlights: ["World's View sunset trip", "San Rock Art tours", "Infinity pool among rocks"],
+                bestTime: "April to October",
+                coords: "Matopos"
+            },
+            {
+                id: 79,
+                name: "Big Cave Camp Matobo",
+                region: "Matobo & Bulawayo",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.7,
+                badge: "Kopje Viewpoint",
+                desc: "Perched atop a granite whaleback kopje, featuring traditional stone-and-thatch cottages with views of Matobo National Park.",
+                highlights: ["Whaleback rock views", "Leopard tracking safaris", "Ndebele cultural village"],
+                bestTime: "Year-round",
+                coords: "Matobo Border"
+            },
+            {
+                id: 80,
+                name: "Shashani Lodge",
+                region: "Matobo & Bulawayo",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.5,
+                badge: "Private Reserve",
+                desc: "Set on a private game reserve on the border of Matobo National Park, offering views over the Shashani river valley.",
+                highlights: ["Game drives for black and white rhino", "Valley hikes", "Open air boma fire"],
+                bestTime: "May to October",
+                coords: "Matobo South"
+            },
+            {
+                id: 81,
+                name: "Hermits Peak Lodge Matopos",
+                region: "Matobo & Bulawayo",
+                category: "Mountain Resort",
+                price: "$$",
+                rating: 4.4,
+                badge: "Rugged Isolation",
+                desc: "Secluded lodge surrounded by dramatic balancing rocks, popular with hikers, artists, and bird watchers.",
+                highlights: ["Balancing rock formations", "Black eagle raptor observation", "Quiet mountain solitude"],
+                bestTime: "Year-round",
+                coords: "Matopos Hills"
+            },
+            {
+                id: 82,
+                name: "The Nesbitt Castle",
+                region: "Matobo & Bulawayo",
+                category: "Boutique Hotel",
+                price: "$$",
+                rating: 4.6,
+                badge: "Gothic Castle",
+                desc: "An authentic 19th-century Gothic style castle tucked into Bulawayo's suburbs, featuring battlements, dragon gargoyles, and lush gardens.",
+                highlights: ["Gothic castle architecture", "Fine dining in Coach House", "Subtropical gardens"],
+                bestTime: "Year-round",
+                coords: "Bulawayo Suburbs"
+            },
+            {
+                id: 83,
+                name: "Bulawayo Club Hotel",
+                region: "Matobo & Bulawayo",
+                category: "Heritage & Culture",
+                price: "$$",
+                rating: 4.5,
+                badge: "Gentlemen's Club Heritage",
+                desc: "A restored grand 1920s classic gentleman's club in downtown Bulawayo, showcasing marble columns, billiards, and period artwork.",
+                highlights: ["Billiards room & bar", "Historic city walking tours", "Colonial period architecture"],
+                bestTime: "Year-round",
+                coords: "Bulawayo City Center"
+            },
+            {
+                id: 84,
+                name: "Matobo Hills Lodge",
+                region: "Matobo & Bulawayo",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.6,
+                badge: "Granite Swimming Pool",
+                desc: "Thatched chalets built atop smooth granite rock, complete with a swimming pool carved into natural stone.",
+                highlights: ["Granite rock swimming pool", "Rock painting excursions", "Sunset kopje sundowners"],
+                bestTime: "Year-round",
+                coords: "Matobo National Park"
+            },
+            {
+                id: 85,
+                name: "Maleme Dam Campsite",
+                region: "Matobo & Bulawayo",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.2,
+                badge: "Lakeside Matopos",
+                desc: "Zimparks rest camp on the shores of Maleme Dam inside Matobo National Park, famous for pony trails and rhino tracking.",
+                highlights: ["Pony trail rides", "Maleme Dam canoe fishing", "Rhino tracking base"],
+                bestTime: "Year-round",
+                coords: "Maleme Dam, Matobo"
+            },
+            {
+                id: 86,
+                name: "Tshipise Wilderness Outpost",
+                region: "Matobo & Bulawayo",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.1,
+                badge: "Bush Camping",
+                desc: "Wild camping and log cabin retreat in the southern Matobo hills, surrounded by baobabs and mopane woodland.",
+                highlights: ["Mopane bush treks", "Baobab grove picnics", "Unhurried stargazing"],
+                bestTime: "April to October",
+                coords: "Southern Matobo"
+            },
+            {
+                id: 87,
+                name: "Hillside Dams Conservancy Lodge",
+                region: "Matobo & Bulawayo",
+                category: "Eco Retreat",
+                price: "$",
+                rating: 4.3,
+                badge: "Urban Nature Reserve",
+                desc: "Tranquil nature reserve in Bulawayo featuring two historic dams, forest trails, and abundant bird species.",
+                highlights: ["Canoeing on urban dam", "Waterfront cafe dining", "Forest birdwatching"],
+                bestTime: "Year-round",
+                coords: "Bulawayo"
+            },
+            {
+                id: 88,
+                name: "Khami Ruins Outpost & Lodge",
+                region: "Matobo & Bulawayo",
+                category: "Heritage & Culture",
+                price: "$$",
+                rating: 4.4,
+                badge: "UNESCO Archaeological Site",
+                desc: "Located near Khami Ruins, the 15th-century capital of the Torwa Dynasty featuring stone terraces and artifacts.",
+                highlights: ["Khami Ruins guided tour", "Archaeological museum", "River valley views"],
+                bestTime: "Year-round",
+                coords: "Khami, Bulawayo"
+            },
+
+            // --- HARARE & CENTRAL ZIMBABWE (89 - 95) ---
+            {
+                id: 89,
+                name: "Meikles Hotel Harare",
+                region: "Harare & Central",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.7,
+                badge: "5-Star Capital Icon",
+                desc: "Zimbabwe's premier 5-star city hotel overlooking Africa Unity Square, offering timeless luxury, high tea, and fine dining.",
+                highlights: ["Rooftop swimming pool", "La Fontaine fine dining", "Traditional high tea"],
+                bestTime: "Year-round",
+                coords: "Harare CBD"
+            },
+            {
+                id: 90,
+                name: "Chengeta Safari Lodge",
+                region: "Harare & Central",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.6,
+                badge: "1 Hour from Harare",
+                desc: "Situated at the foot of the your-own-private-haven tile hills near Selous, ideal for quick wildlife escapes from the capital.",
+                highlights: ["Canoe safaris on private dam", "Elephant close encounters", "Bush walk tracking"],
+                bestTime: "Year-round",
+                coords: "Selous / Chegutu"
+            },
+            {
+                id: 91,
+                name: "Wild Geese Lodge Harare",
+                region: "Harare & Central",
+                category: "Boutique Hotel",
+                price: "$$",
+                rating: 4.6,
+                badge: "Hilltop Sanctuary",
+                desc: "Perched on a hilltop in Mazowe Valley overviewing lush private gardens with grazing sable antelope.",
+                highlights: ["Mazowe Valley views", "Sable antelope garden sightings", "Gourmet Sunday lunch"],
+                bestTime: "Year-round",
+                coords: "Harare North / Mazowe"
+            },
+            {
+                id: 92,
+                name: "Imire Rhino & Wildlife Conservation Lodge",
+                region: "Harare & Central",
+                category: "Eco Retreat",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Rhino Conservation",
+                desc: "World-renowned rhino and elephant conservation center 1.5 hours from Harare. Guests experience close animal interactions.",
+                highlights: ["Rhino conservation walks", "Elephant feeding & bathing", "Luxury eco-lodges"],
+                bestTime: "Year-round",
+                coords: "Macheke / Marondera"
+            },
+            {
+                id: 93,
+                name: "Mbizi Game Park & Lodge",
+                region: "Harare & Central",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.4,
+                badge: "Near Airport Sanctuary",
+                desc: "Located just 20 minutes from Robert Gabriel Mugabe International Airport, set among ancient Ruwa tea trees and riverbank bush.",
+                highlights: ["Boat cruises on Ruwa river", "Giraffe & zebra drives", "Traditional braai areas"],
+                bestTime: "Year-round",
+                coords: "Ruwa / Harare East"
+            },
+            {
+                id: 94,
+                name: "Bally Vaughan Sanctuary & Lodge",
+                region: "Harare & Central",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.5,
+                badge: "Animal Sanctuary",
+                desc: "Sanctuary for rescued African wildlife, offering family-friendly safari stays and birding along the Mwangu river.",
+                highlights: ["Wildlife sanctuary tours", "Canoeing on dam", "Family safari chalets"],
+                bestTime: "Year-round",
+                coords: "Enterprise Road, Harare"
+            },
+            {
+                id: 95,
+                name: "Pamuzinda Safari Lodge",
+                region: "Harare & Central",
+                category: "Safari & Wildlife",
+                price: "$$",
+                rating: 4.7,
+                badge: "Riverine Haven",
+                desc: "Luxury day-trip and weekend resort set along the Seruwe River, famous for safari boat rides and day spas.",
+                highlights: ["Seruwe river pontoon cruises", "Horseback safari trails", "Riverside luxury chalets"],
+                bestTime: "Year-round",
+                coords: "Selous"
+            },
+
+            // --- LOWVELD & GONAREZHOU (96 - 100) ---
+            {
+                id: 96,
+                name: "Chilo Gorge Safari Lodge",
+                region: "Lowveld & Gonarezhou",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 4.9,
+                badge: "Chilojo Cliffs View",
+                desc: "Perched on the edge of a cliff overlooking the Save River and iconic red sandstone Chilojo Cliffs in Gonarezhou National Park.",
+                highlights: ["Chilojo Cliffs 4x4 safaris", "Save River boat trips", "Shangaan village tours"],
+                bestTime: "May to October (Peak Dry)",
+                coords: "Gonarezhou National Park"
+            },
+            {
+                id: 97,
+                name: "Singita Pamushana Lodge",
+                region: "Lowveld & Gonarezhou",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 5.0,
+                badge: "Ultra Luxury Sanctuary",
+                desc: "High-end luxury lodge set in the 130,000-acre Malilangwe Wildlife Reserve, famous for cliffside plunge pools and rhino density.",
+                highlights: ["Private cliffside plunge pools", "Malilangwe dam cruises", "Rock art & rhino tracking"],
+                bestTime: "Year-round",
+                coords: "Malilangwe Reserve"
+            },
+            {
+                id: 98,
+                name: "Singita Malilangwe House",
+                region: "Lowveld & Gonarezhou",
+                category: "Luxury Lodge",
+                price: "$$$",
+                rating: 5.0,
+                badge: "Exclusive Villa",
+                desc: "An exclusive-use 5-bedroom villa perched high on a sandstone ridge with dedicated private chef, staff, and safari vehicle.",
+                highlights: ["Private chef & safari guide", "Exclusive villa estate", "Sunset dam cruises"],
+                bestTime: "May to November",
+                coords: "Malilangwe Reserve"
+            },
+            {
+                id: 99,
+                name: "Chilojo Campsite Gonarezhou",
+                region: "Lowveld & Gonarezhou",
+                category: "Adventure & Camping",
+                price: "$",
+                rating: 4.7,
+                badge: "Wild Sandstone Cliffs",
+                desc: "Wild, unfenced campsite located right across the Runde River looking up at the towering 180m red sandstone Chilojo Cliffs.",
+                highlights: ["Direct Chilojo cliff view", "Runde river crossing", "Pure untamed wilderness"],
+                bestTime: "June to October",
+                coords: "Runde River, Gonarezhou"
+            },
+            {
+                id: 100,
+                name: "Hippopool Wilderness Outpost",
+                region: "Lowveld & Gonarezhou",
+                category: "Eco Retreat",
+                price: "$$",
+                rating: 4.5,
+                badge: "Lowveld Bushveld",
+                desc: "Eco-lodge situated near Hippo Valley in Chiredzi, surrounded by ancient baobabs, sugarcane fields, and river wildlife.",
+                highlights: ["Hippo pool viewing decks", "Lowveld sugar estate tours", "Baobab forest walks"],
+                bestTime: "May to October",
+                coords: "Chiredzi / Hippo Valley"
+            }
+        ];
+
+        // State Management
+        let currentFilters = {
+            search: "",
+            region: "All",
+            category: "All",
+            sort: "popular",
+            wishlistOnly: false
+        };
+        let activeViewMode = "grid"; // "grid" or "map"
+        let wishlist = JSON.parse(localStorage.getItem('zim_resorts_wishlist') || '[]');
+
+        // DOM Ready Initializer
+        document.addEventListener('DOMContentLoaded', () => {
+            initCategoryBar();
+            renderResorts();
+            updateWishlistBadge();
+            setupEventListeners();
+        });
+
+        // Initialize Category Bar Filters
+        function initCategoryBar() {
+            const categories = ["All", "Safari & Wildlife", "Luxury Lodge", "Mountain Resort", "Water & Lakes", "Heritage & Culture", "Boutique Hotel", "Eco Retreat", "Adventure & Camping"];
+            const container = document.getElementById('category-bar');
+            
+            container.innerHTML = categories.map(cat => `
+                <button onclick="filterByCategory('${cat}')" 
+                        class="category-btn whitespace-nowrap px-3.5 py-1.5 rounded-full border text-xs font-medium transition cursor-pointer ${cat === 'All' ? 'bg-brand-gold text-slate-900 border-brand-gold font-bold' : 'bg-brand-dark/60 text-slate-300 border-brand-emeraldlight/40 hover:border-brand-gold'}">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        // Setup DOM Event Listeners
+        function setupEventListeners() {
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                currentFilters.search = e.target.value.toLowerCase().trim();
+                renderResorts();
+            });
+
+            document.getElementById('region-filter').addEventListener('change', (e) => {
+                currentFilters.region = e.target.value;
+                renderResorts();
+            });
+
+            document.getElementById('sort-filter').addEventListener('change', (e) => {
+                currentFilters.sort = e.target.value;
+                renderResorts();
+            });
+        }
+
+        // Filter Handlers
+        function filterByCategory(cat) {
+            currentFilters.category = cat;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if(btn.innerText === cat) {
+                    btn.className = 'category-btn whitespace-nowrap px-3.5 py-1.5 rounded-full border text-xs transition cursor-pointer bg-brand-gold text-slate-900 border-brand-gold font-bold';
+                } else {
+                    btn.className = 'category-btn whitespace-nowrap px-3.5 py-1.5 rounded-full border text-xs transition cursor-pointer bg-brand-dark/60 text-slate-300 border-brand-emeraldlight/40 hover:border-brand-gold';
+                }
+            });
+            renderResorts();
+        }
+
+        function filterByRegion(reg) {
+            currentFilters.region = reg;
+            document.getElementById('region-filter').value = reg;
+            renderResorts();
+        }
+
+        function toggleWishlistFilter() {
+            currentFilters.wishlistOnly = !currentFilters.wishlistOnly;
+            const btn = document.getElementById('wishlist-badge-btn');
+            if(currentFilters.wishlistOnly) {
+                btn.classList.add('ring-2', 'ring-brand-terracotta', 'bg-brand-terracotta/40');
+            } else {
+                btn.classList.remove('ring-2', 'ring-brand-terracotta', 'bg-brand-terracotta/40');
+            }
+            renderResorts();
+        }
+
+        function resetFilters() {
+            currentFilters = {
+                search: "",
+                region: "All",
+                category: "All",
+                sort: "popular",
+                wishlistOnly: false
+            };
+            document.getElementById('search-input').value = "";
+            document.getElementById('region-filter').value = "All";
+            document.getElementById('sort-filter').value = "popular";
+            document.getElementById('wishlist-badge-btn').classList.remove('ring-2', 'ring-brand-terracotta', 'bg-brand-terracotta/40');
+            initCategoryBar();
+            renderResorts();
+        }
+
+        // Filter & Sort Core Data
+        function getFilteredResorts() {
+            return ZIM_RESORTS.filter(item => {
+                // Search Filter
+                const matchesSearch = currentFilters.search === "" || 
+                    item.name.toLowerCase().includes(currentFilters.search) ||
+                    item.region.toLowerCase().includes(currentFilters.search) ||
+                    item.category.toLowerCase().includes(currentFilters.search) ||
+                    item.desc.toLowerCase().includes(currentFilters.search);
+
+                // Region Filter
+                const matchesRegion = currentFilters.region === "All" || item.region === currentFilters.region;
+
+                // Category Filter
+                const matchesCategory = currentFilters.category === "All" || item.category === currentFilters.category;
+
+                // Wishlist Filter
+                const matchesWishlist = !currentFilters.wishlistOnly || wishlist.includes(item.id);
+
+                return matchesSearch && matchesRegion && matchesCategory && matchesWishlist;
+            }).sort((a, b) => {
+                if (currentFilters.sort === "az") return a.name.localeCompare(b.name);
+                if (currentFilters.sort === "za") return b.name.localeCompare(a.name);
+                if (currentFilters.sort === "price-low") return a.price.length - b.price.length;
+                if (currentFilters.sort === "price-high") return b.price.length - a.price.length;
+                return b.rating - a.rating; // default 'popular'
+            });
+        }
+
+        // Main Render Dispatcher
+        function renderResorts() {
+            const filtered = getFilteredResorts();
+            document.getElementById('results-count').innerText = `Showing ${filtered.length} of ${ZIM_RESORTS.length} places`;
+
+            const gridContainer = document.getElementById('resorts-grid');
+            const noResults = document.getElementById('no-results');
+
+            if(filtered.length === 0) {
+                gridContainer.innerHTML = "";
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            if(activeViewMode === "grid") {
+                renderGridView(filtered);
+            } else {
+                renderMapView(filtered);
+            }
+        }
+
+        // Render Card Grid Mode
+        function renderGridView(items) {
+            const gridContainer = document.getElementById('resorts-grid');
+            gridContainer.innerHTML = items.map(resort => {
+                const isFav = wishlist.includes(resort.id);
+                return `
+                <div class="bg-brand-card rounded-2xl border border-brand-emeraldlight/30 overflow-hidden hover:border-brand-gold/50 transition-all duration-300 hover:shadow-xl hover:shadow-brand-gold/5 flex flex-col justify-between group">
+                    <div class="p-6 relative">
+                        <!-- Top Header Row -->
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div>
+                                <span class="inline-block px-2.5 py-1 rounded-md bg-brand-emerald/40 text-brand-gold border border-brand-emeraldlight/50 text-[10px] font-bold uppercase tracking-wider mb-2">
+                                    ${resort.category}
+                                </span>
+                                <h3 class="font-serif text-xl font-bold text-white group-hover:text-brand-gold transition line-clamp-1 cursor-pointer" onclick="openModal(${resort.id})">
+                                    ${resort.name}
+                                </h3>
+                            </div>
+                            <button onclick="toggleWishlist(${resort.id})" class="text-lg transition-transform active:scale-125 cursor-pointer ${isFav ? 'text-brand-terracotta' : 'text-slate-600 hover:text-slate-400'}">
+                                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <!-- Location & Badge -->
+                        <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+                            <span class="flex items-center space-x-1.5">
+                                <i class="fa-solid fa-location-dot text-brand-terracotta"></i>
+                                <span>${resort.region}</span>
+                            </span>
+                            <span class="text-brand-gold/90 font-medium bg-brand-dark/50 px-2 py-0.5 rounded border border-brand-gold/20 text-[10px]">
+                                ${resort.badge}
+                            </span>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4 line-clamp-3">
+                            ${resort.desc}
+                        </p>
+
+                        <!-- Highlight Pills -->
+                        <div class="space-y-1.5 mb-4">
+                            ${resort.highlights.slice(0, 2).map(h => `
+                                <div class="flex items-center text-[11px] text-slate-400 space-x-2">
+                                    <i class="fa-solid fa-check text-brand-gold text-[10px]"></i>
+                                    <span class="truncate">${h}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Card Footer Actions -->
+                    <div class="px-6 py-4 bg-brand-dark/50 border-t border-brand-emeraldlight/20 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xs text-slate-400 font-mono">${resort.price}</span>
+                            <span class="text-slate-600">•</span>
+                            <span class="flex items-center text-xs font-bold text-slate-200">
+                                <i class="fa-solid fa-star text-brand-gold text-xs mr-1"></i>
+                                ${resort.rating}
+                            </span>
+                        </div>
+
+                        <button onclick="openModal(${resort.id})" class="text-xs font-bold text-brand-gold hover:text-white flex items-center space-x-1 transition cursor-pointer">
+                            <span>Explore Details</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // Render Map View Mode
+        function renderMapView(items) {
+            const regions = [
+                { name: "Victoria Falls & Batoka", icon: "fa-water" },
+                { name: "Eastern Highlands", icon: "fa-mountain" },
+                { name: "Hwange & West", icon: "fa-paw" },
+                { name: "Kariba & Mana Pools", icon: "fa-fish" },
+                { name: "Great Zimbabwe & South", icon: "fa-monument" },
+                { name: "Harare & Central", icon: "fa-city" },
+                { name: "Matobo & Bulawayo", icon: "fa-gem" },
+                { name: "Lowveld & Gonarezhou", icon: "fa-tree" }
+            ];
+
+            const regionListContainer = document.getElementById('map-region-list');
+            regionListContainer.innerHTML = regions.map(reg => {
+                const count = items.filter(i => i.region === reg.name).length;
+                return `
+                    <button onclick="selectMapRegion('${reg.name}')" class="w-full text-left p-3 rounded-lg bg-brand-card hover:bg-brand-emerald/30 border border-brand-emeraldlight/20 flex items-center justify-between transition cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid ${reg.icon} text-brand-gold text-sm w-5"></i>
+                            <span class="text-xs font-bold text-slate-200">${reg.name}</span>
+                        </div>
+                        <span class="text-[10px] bg-brand-dark px-2 py-0.5 rounded-full text-brand-gold font-bold">${count}</span>
+                    </button>
+                `;
+            }).join('');
+
+            // Automatically select first available region
+            selectMapRegion(regions[0].name);
+        }
+
+        function selectMapRegion(regionName) {
+            const filtered = getFilteredResorts().filter(i => i.region === regionName);
+            document.getElementById('map-region-title').innerText = regionName;
+            document.getElementById('map-region-desc').innerText = `Showing available resorts and luxury safari lodges in ${regionName}.`;
+
+            const container = document.getElementById('map-region-resorts');
+            if(filtered.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 col-span-2 py-8">No matching resorts in this region for current filters.</p>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(r => `
+                <div onclick="openModal(${r.id})" class="p-3 bg-brand-card rounded-xl border border-brand-emeraldlight/30 hover:border-brand-gold cursor-pointer transition">
+                    <div class="flex justify-between items-start mb-1">
+                        <h5 class="text-xs font-bold text-white truncate">${r.name}</h5>
+                        <span class="text-[10px] text-brand-gold font-bold"><i class="fa-solid fa-star text-[9px]"></i> ${r.rating}</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 block">${r.category} • ${r.price}</span>
+                </div>
+            `).join('');
+        }
+
+        // View Mode Switcher
+        function setViewMode(mode) {
+            activeViewMode = mode;
+            const gridContainer = document.getElementById('resorts-grid');
+            const mapContainer = document.getElementById('resorts-map-view');
+            const gridBtn = document.getElementById('view-grid-btn');
+            const mapBtn = document.getElementById('view-map-btn');
+
+            if(mode === 'grid') {
+                gridContainer.classList.remove('hidden');
+                mapContainer.classList.add('hidden');
+                gridBtn.className = "px-3.5 py-2 rounded-lg bg-brand-gold text-slate-900 font-semibold text-xs flex items-center space-x-2 transition shadow";
+                mapBtn.className = "px-3.5 py-2 rounded-lg bg-brand-card hover:bg-brand-emerald/40 text-slate-300 font-semibold text-xs flex items-center space-x-2 border border-brand-emeraldlight/30 transition";
+            } else {
+                gridContainer.classList.add('hidden');
+                mapContainer.classList.remove('hidden');
+                mapBtn.className = "px-3.5 py-2 rounded-lg bg-brand-gold text-slate-900 font-semibold text-xs flex items-center space-x-2 transition shadow";
+                gridBtn.className = "px-3.5 py-2 rounded-lg bg-brand-card hover:bg-brand-emerald/40 text-slate-300 font-semibold text-xs flex items-center space-x-2 border border-brand-emeraldlight/30 transition";
+            }
+            renderResorts();
+        }
+
+        // Wishlist Persistence
+        function toggleWishlist(id) {
+            if(wishlist.includes(id)) {
+                wishlist = wishlist.filter(item => item !== id);
+            } else {
+                wishlist.push(id);
+            }
+            localStorage.setItem('zim_resorts_wishlist', JSON.stringify(wishlist));
+            updateWishlistBadge();
+            renderResorts();
+        }
+
+        function updateWishlistBadge() {
+            document.getElementById('wishlist-count').innerText = wishlist.length;
+        }
+
+        // Detailed Modal Handlers
+        function openModal(id) {
+            const resort = ZIM_RESORTS.find(r => r.id === id);
+            if(!resort) return;
+
+            const isFav = wishlist.includes(resort.id);
+            const modalBody = document.getElementById('modal-body');
+
+            modalBody.innerHTML = `
+                <div class="p-6 sm:p-8">
+                    <!-- Top Category & Wishlist Badge -->
+                    <div class="flex justify-between items-center mb-4 pr-8">
+                        <span class="px-3 py-1 rounded-full bg-brand-emerald/40 text-brand-gold border border-brand-emeraldlight/50 text-xs font-bold uppercase tracking-wider">
+                            ${resort.category}
+                        </span>
+                        <button onclick="toggleWishlist(${resort.id}); openModal(${resort.id});" class="flex items-center space-x-2 text-xs font-bold text-slate-300 hover:text-brand-terracotta bg-brand-dark px-3 py-1.5 rounded-full border border-brand-emeraldlight/30 cursor-pointer">
+                            <i class="${isFav ? 'fa-solid text-brand-terracotta' : 'fa-regular'} fa-heart"></i>
+                            <span>${isFav ? 'Saved in Wishlist' : 'Add to Wishlist'}</span>
+                        </button>
+                    </div>
+
+                    <!-- Title & Location -->
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-2">${resort.name}</h2>
+                    <div class="flex items-center space-x-4 text-xs text-slate-400 mb-6 pb-4 border-b border-brand-emeraldlight/20">
+                        <span class="flex items-center space-x-1.5">
+                            <i class="fa-solid fa-location-dot text-brand-terracotta"></i>
+                            <span>${resort.region} (${resort.coords})</span>
+                        </span>
+                        <span>•</span>
+                        <span class="text-brand-gold font-bold"><i class="fa-solid fa-star mr-1"></i>${resort.rating} Rating</span>
+                        <span>•</span>
+                        <span class="font-mono text-slate-300 font-bold">${resort.price} Price Range</span>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-6">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-brand-gold mb-2">Overview</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">${resort.desc}</p>
+                    </div>
+
+                    <!-- Key Highlights Grid -->
+                    <div class="mb-6 bg-brand-dark/60 p-4 rounded-xl border border-brand-emeraldlight/20">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-brand-gold mb-3">Key Highlights & Activities</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            ${resort.highlights.map(h => `
+                                <div class="flex items-center text-xs text-slate-300 space-x-2">
+                                    <i class="fa-solid fa-circle-check text-brand-gold text-xs"></i>
+                                    <span>${h}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Additional Details Meta -->
+                    <div class="grid grid-cols-2 gap-4 text-xs mb-8">
+                        <div class="bg-brand-dark/40 p-3 rounded-lg border border-brand-emeraldlight/20">
+                            <span class="text-slate-500 block mb-1">Recommended Visiting Season</span>
+                            <span class="text-slate-200 font-bold">${resort.bestTime}</span>
+                        </div>
+                        <div class="bg-brand-dark/40 p-3 rounded-lg border border-brand-emeraldlight/20">
+                            <span class="text-slate-500 block mb-1">Destination Style</span>
+                            <span class="text-brand-gold font-bold">${resort.badge}</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-brand-emeraldlight/20">
+                        <button onclick="alert('Destination inquiry for ${resort.name} sent to Zimbabwe Tourism Directory!')" 
+                                class="flex-1 bg-gradient-to-r from-brand-gold via-brand-goldlight to-brand-gold text-slate-900 font-bold py-3 px-6 rounded-xl text-xs uppercase tracking-wider hover:opacity-95 transition cursor-pointer">
+                            Inquire / Request Booking
+                        </button>
+                        <button onclick="closeModal()" class="px-6 py-3 rounded-xl bg-brand-dark hover:bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider border border-brand-emeraldlight/30 transition cursor-pointer">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('detail-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('detail-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
